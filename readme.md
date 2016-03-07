@@ -26,4 +26,4 @@ the application's `.env` configuration is pre-configured to work with the Docker
 7. Now visit the application in your browser at the docker-machine's IP (i.e. `192.168.99.100`)
 8. `docker-compose stop` to stop the application
 
-<span style="color: red;">Change database credentials and set an application key before developing a new application from this base foundation</span>
+**Change database credentials and set an application key before developing a new application from this base foundation**
