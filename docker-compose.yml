@@ -1,0 +1,29 @@
+fpm:
+  build: .
+  dockerfile: ./containers/fpm/Dockerfile
+  container_name: 'fpm'
+  volumes:
+    - ./:/var/www/html
+  links:
+    - postgres
+web:
+  image: nginx:latest
+  container_name: 'nginx'
+  env_file: .env
+  volumes:
+    - ./containers/vhost.conf:/etc/nginx/conf.d/default.conf
+    - ./:/var/www/html
+  links:
+    - fpm
+    - postgres
+  ports:
+    - "80:80"
+postgres:
+  image: postgres:9.5.1
+  container_name: 'postgres'
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_USER: service_user
+    POSTGRES_PASSWORD: P@ssw0rd
+    POSTGRES_DB: service_db
