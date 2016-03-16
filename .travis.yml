@@ -1,0 +1,40 @@
+language: php
+services: docker
+php:
+- 7.0
+env:
+  DOCKER_COMPOSE_VERSION: 1.6.2
+  APP_ENV: local
+  APP_DEBUG: true
+  DB_CONNECTION: pgsql
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_DATABASE: service_db
+  DB_USERNAME: service_user
+  DB_PASSWORD: P@ssw0rd
+  CACHE_DRIVER: array
+  QUEUE_DRIVER: sync
+before_install:
+- docker -v
+- sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install docker-engine
+- docker -v
+- sudo rm /usr/local/bin/docker-compose
+- curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m`" > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+- cp .env.example .env
+- sudo /etc/init.d/postgresql stop
+install:
+- composer install --no-interaction --prefer-dist
+script:
+- docker-compose -v
+- docker-compose up -d
+- sleep 10
+- docker-compose ps
+- docker exec -it $(docker ps -f name=fpm -q) php artisan migrate --seed
+- docker exec -it $(docker ps -f name=fpm -q) vendor/bin/phpunit
+after_script:
+- docker images
+notifications:
+  slack:
+    secure: 7Da36aBfrdN/RZJQhl1tuKk0h8R9fy1uTlIPnb15XDyEi5aVmDR/O+t4P30xRSAIQEZhdRs+eZtUnd6A6AqFHwHRAZqkM7RiawHBdPxu3yBQtt82QhctgSw21G4jY4XBOYTTZ3zny/+J3aYMJpMMOQnLamMEJiXTXWW2Hx3kKOuLYdfKGumdlgTdUqi6JmC1w4GoDW2nzWFYdaHkxDBIefMXD/A7kf41mowIbyCi9MkUszn7ZOuNsqmtm1JYnmF4J5X4hgi7sgT9cMxMGdV5ugcmkoj2k8Vy8knJUbgNnaz0DmtRObnlPpaXOEJpFcsKsamSZBCnf23sT1b7N2T3TjVHReddoRuRz5mv5iYmZ/al5xsvEwN5BtEukjRPvRNZvNaSQ0OayjfgZtNyOflu5/7pBZpOoLcn+YXKMfp8Ay0MlxYD3BlTqdpwct6EtnJs2K9C8hQ+8HMYA72GwmLauQbjhI7ZrV2YXs+cE9x3rFyCF0sTE/j+XtL+Xb9cTKbRwkl/PLzOyYwWqrYkMxmIfS5IUiIqTuJBBwtblu2ob7Vqq60j1vPWfkHskEsb/kTnmgsj/cNcBpVhAIr1iuykX8krtPGSRFS3bogz57cBgn/014HGSCdUAkSGMDxzGoyO9+IeDF71Uxst+pBPuWbqCorlNIj+DwL9hsNO/pbhLYE=
