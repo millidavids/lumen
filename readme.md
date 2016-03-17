@@ -16,14 +16,17 @@ the application's `.env` configuration is pre-configured to work with the Docker
 2. Change directories into the application's root
 3. Copy `.env.example` to `.env`
 4. Install composer dependencies (`composer install`) either from your local machine in the application root, or from the `fpm` container's cli.
-  * access the `fpm` container's cli with: `docker exec -it $(docker ps -f name=fpm -q) bash`
-5. Check the IP of the docker machine you are running:
+  * Access the `fpm` container's cli with: `docker exec -it $(docker ps -f name=fpm -q) bash`
+  * You may want to alias the above as `alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it `docker ps -f name=${service} -q` "$@" };_docker_exec'`
+  * The `dockerexc` alias above allows you to type `dockerexc fpm php -v`
+5. Run `php artisan migrate --seed` to add your first migration example
+6. Check the IP of the docker machine you are running:
   * `docker-machine ip default`
   * It is usually `192.168.99.100`
-6. Boot the application container "stack" using Docker Compose
+7. Boot the application container "stack" using Docker Compose
   * `docker-compose up -d`
   * If you'd like to see the log output you can attach to consolidated logs with `docker-compose logs` (`ctrl + c` to exit)
-7. Now visit the application in your browser at the docker-machine's IP (i.e. `192.168.99.100`)
-8. `docker-compose stop` to stop the application
+8. Now visit the application in your browser at the docker-machine's IP (i.e. `192.168.99.100`)
+9. `docker-compose stop` to stop the application
 
-**Change database credentials and set an application key before developing a new application from this base foundation**
+**Change database credentials set an [application key](https://laravel.com/docs/5.2#configuration), and reset all migrations before developing a new application from this base foundation.**

@@ -12,5 +12,5 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    return $app->make('db')->table('quotes')->orderByRaw('random()')->take(1)->get();
 });
