@@ -29,4 +29,4 @@ the application's `.env` configuration is pre-configured to work with the Docker
 8. Now visit the application in your browser at the docker-machine's IP (i.e. `192.168.99.100`)
 9. `docker-compose stop` to stop the application
 
-**Change database credentials set an [application key](https://laravel.com/docs/5.2#configuration), and reset all migrations before developing a new application from this base foundation.**
+**Change database credentials, set an [application key](https://laravel.com/docs/5.2#configuration), and reset all migrations before developing a new application from this base foundation.**
