@@ -17,7 +17,7 @@ the application's `.env` configuration is pre-configured to work with the Docker
 3. Copy `.env.example` to `.env`
 4. Install composer dependencies (`composer install`) either from your local machine in the application root, or from the `fpm` container's cli.
   * Access the `fpm` container's cli with: `docker exec -it $(docker ps -f name=fpm -q) bash`
-  * You may want to alias the above as `alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it `docker-compose ps -q ${service}` "$@" };_docker_exec'`
+  * You may want to alias the above as `alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it $(docker-compose ps -q ${service}) "$@" };_docker_exec'`
   * The `dockerexc` alias above allows you to type `dockerexc fpm php -v`
 5. Run `php artisan migrate --seed` to add your first migration example
 6. Check the IP of the docker machine you are running:
