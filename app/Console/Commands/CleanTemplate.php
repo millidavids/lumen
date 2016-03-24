@@ -54,16 +54,19 @@ class CleanTemplate extends Command
                 $this->info('Removing example database seed.');
             }
 
+            $this->info('Altering DatabaseSeeder file.');
             $fname = database_path('seeds/DatabaseSeeder.php');
-            $fhandle = fopen($fname, "r");
-            $content = fread($fhandle, filesize($fname));
 
-            $content = str_replace('$this->call(\'QuotesTableSeeder\');', "",
-                $content);
+            $rows = file($fname);
+            $blacklist = "QuotesTableSeeder";
 
-            $fhandle = fopen($fname, "w");
-            fwrite($fhandle, $content);
-            fclose($fhandle);
+            foreach($rows as $key => $row) {
+                if(preg_match("/($blacklist)/", $row)) {
+                    unset($rows[$key]);
+                }
+            }
+
+            file_put_contents($fname, implode('', $rows));
         }
     }
 
