@@ -86,9 +86,6 @@ if(class_exists('Vluzrmos\Tinker\TinkerServiceProvider')) {
     $app->register('Vluzrmos\Tinker\TinkerServiceProvider');
 }
 
-if(class_exists('App\Providers\CleanTemplateServiceProvider')) {
-    $app->register('App\Providers\CleanTemplateServiceProvider');
-}
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
