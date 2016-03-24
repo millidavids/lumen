@@ -12,7 +12,8 @@
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "~4.0",
-        "vluzrmos/tinker": "^1.1"
+        "vluzrmos/tinker": "^1.1",
+        "realpage/builder": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -24,5 +25,6 @@
             "tests/",
             "database/"
         ]
-    }
+    },
+    "minimum-stability": "dev"
 }

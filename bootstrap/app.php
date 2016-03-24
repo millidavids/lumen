@@ -82,8 +82,13 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+// Tinker implements artisan's tinker for Lumen
 if(class_exists('Vluzrmos\Tinker\TinkerServiceProvider')) {
-    $app->register('Vluzrmos\Tinker\TinkerServiceProvider');
+    $app->register(\Vluzrmos\Tinker\TinkerServiceProvider::class);
+}
+
+if(class_exists('RealPage\Builder\BuilderServiceProvider')) {
+    $app->register(\RealPage\Builder\BuilderServiceProvider::class);
 }
 
 /*
