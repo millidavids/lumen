@@ -35,20 +35,24 @@ class CleanTemplate extends Command
             $seeds = 'yes';
         } else {
             $db_reset = $this->confirm('Reset database migrations?', true);
-            $migrations = $this->confirm('Remove database migrations?',
+            $migrations = $this->confirm('Remove example database migration?',
                 true);
-            $seeds = $this->confirm('Remove database seeds?', true);
+            $seeds = $this->confirm('Remove example database seed?', true);
         }
         if ($db_reset) {
             exec('docker-compose run --rm fpm php artisan migrate:reset');
         }
         if ($migrations) {
             $filename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
-            $this->deleteFile($filename, 'Example migration');
+            if($this->deleteFile($filename, 'Example migration')) {
+                $this->info('Removing example database migration.');
+            }
         }
         if ($seeds) {
             $filename = database_path('seeds/QuotesTableSeeder.php');
-            $this->deleteFile($filename, 'Example seed');
+            if($this->deleteFile($filename, 'Example seed')) {
+                $this->info('Removing example database seed.');
+            }
 
             $fname = database_path('seeds/DatabaseSeeder.php');
             $fhandle = fopen($fname, "r");
@@ -69,7 +73,9 @@ class CleanTemplate extends Command
             unlink($filename);
         } else {
             $this->warn("$type already deleted.");
+            return false;
         }
+        return true;
     }
 
     protected function getOptions()
