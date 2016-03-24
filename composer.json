@@ -13,7 +13,7 @@
         "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "~4.0",
         "vluzrmos/tinker": "^1.1",
-        "realpage/builder": "dev-master"
+        "realpage/builder": "~0.1"
     },
     "autoload": {
         "psr-4": {

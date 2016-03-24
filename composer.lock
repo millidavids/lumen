@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be8ace492bd3a95f8e2fe2c0fe453649",
-    "content-hash": "73e3e2ad13a5fc736e8f75b290445e88",
+    "hash": "5a7fe9cfd63ca17b894567af06d74e2a",
+    "content-hash": "cb4fc4ce50fbb8f3f2a7c805f1c15bc3",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2309,12 +2309,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "bb09cf8982f89b50bb8bc6c0f9e451353ad17065"
+                "reference": "68c0d749b7a9bb527a7b0d3226fa397f26005955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bb09cf8982f89b50bb8bc6c0f9e451353ad17065",
-                "reference": "bb09cf8982f89b50bb8bc6c0f9e451353ad17065",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/68c0d749b7a9bb527a7b0d3226fa397f26005955",
+                "reference": "68c0d749b7a9bb527a7b0d3226fa397f26005955",
                 "shasum": ""
             },
             "require": {
@@ -2351,7 +2351,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-03-22 20:16:49"
+            "time": "2016-03-24 17:39:55"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3044,7 +3044,7 @@
         },
         {
             "name": "realpage/builder",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Realpage/builder.git",
@@ -3616,9 +3616,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "realpage/builder": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
