@@ -42,13 +42,6 @@ class CleanTemplate extends Command
             $seeds = $this->confirm('Remove example database seed?', true);
             $route = $this->confirm('Remove example route?', true);
         }
-        $namespace = $this->ask('Application namespace?', 'App');
-        if ($namespace != 'App') {
-            $this->info('Changing the application namespace');
-            $this->call('app:name', ['name' => $namespace]);
-        } else {
-            $this->warn("Application namespace remaining 'App'.");
-        }
         if ($db_reset) {
             $this->info('Resetting database migrations...');
             $db_reset_process = new Process('docker-compose run --rm fpm php artisan migrate:reset');
@@ -69,6 +62,10 @@ class CleanTemplate extends Command
             $this->info('Altering DatabaseSeeder file...');
             $fname = database_path('seeds/DatabaseSeeder.php');
             $this->removeLineContaining($fname, 'QuotesTableSeeder');
+        }
+        if ($route) {
+            $this->info('Removing example route.');
+            $this->removeLineContaining(app_path('Http/routes.php'), 'quotes');
         }
     }
 
