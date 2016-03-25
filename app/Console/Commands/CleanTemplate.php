@@ -3,7 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Process;
 
 class CleanTemplate extends Command
 {
@@ -13,7 +14,7 @@ class CleanTemplate extends Command
      *
      * @var string
      */
-    protected $name = 'clean:template';
+    protected $signature = 'clean:template {--f|force}';
 
     /**
      * The console command description.
@@ -27,70 +28,63 @@ class CleanTemplate extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         if ($this->option('force')) {
             $db_reset = 'yes';
             $migrations = 'yes';
             $seeds = 'yes';
+            $route = 'yes';
         } else {
             $db_reset = $this->confirm('Reset database migrations?', true);
             $migrations = $this->confirm('Remove example database migration?',
                 true);
             $seeds = $this->confirm('Remove example database seed?', true);
+            $route = $this->confirm('Remove example route?', true);
         }
+        $namespace = $this->ask('Application namespace?', 'App');
         if ($db_reset) {
-            exec('docker-compose run --rm fpm php artisan migrate:reset');
+            $this->info('Resetting database migrations...');
+            $db_reset_process = new Process('docker-compose run --rm fpm php artisan migrate:reset');
+            $db_reset_process->run();
         }
         if ($migrations) {
             $filename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
-            if($this->deleteFile($filename, 'Example migration')) {
-                $this->info('Removing example database migration.');
+            if ($this->deleteFile($filename, 'Example migration')) {
+                $this->info('Removing example database migration...');
             }
         }
         if ($seeds) {
             $filename = database_path('seeds/QuotesTableSeeder.php');
-            if($this->deleteFile($filename, 'Example seed')) {
-                $this->info('Removing example database seed.');
+            if ($this->deleteFile($filename, 'Example seed')) {
+                $this->info('Removing example database seed...');
             }
 
             $this->info('Altering DatabaseSeeder file.');
-            $fname = database_path('seeds/DatabaseSeeder.php');
-
-            $rows = file($fname);
+            $system = new Filesystem();
             $blacklist = "QuotesTableSeeder";
+            $fname = database_path('seeds/DatabaseSeeder.php');
+            $rows = explode("\n", $system->get($fname));
 
-            foreach($rows as $key => $row) {
-                if(preg_match("/($blacklist)/", $row)) {
+            foreach ($rows as $key => $row) {
+                if (preg_match("/($blacklist)/", $row)) {
                     unset($rows[$key]);
                 }
             }
 
-            file_put_contents($fname, implode('', $rows));
+            file_put_contents($fname, implode("\n", $rows));
         }
     }
 
     private function deleteFile($filename, $type)
     {
-        if (file_exists($filename)) {
-            unlink($filename);
+        $system = new Filesystem();
+        if ($system->exists($filename)) {
+            $system->delete($filename);
         } else {
             $this->warn("$type already deleted.");
             return false;
         }
         return true;
     }
-
-    protected function getOptions()
-    {
-        return array(
-            array(
-                'force',
-                'f',
-                InputOption::VALUE_NONE,
-                'Force yes.'
-            )
-        );
-    }
-
 }
