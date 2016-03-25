@@ -135,7 +135,7 @@ class CleanTemplate extends Command
         $section = false;
         foreach ($rows as $key => $row) {
             if ($section) {
-                if (preg_match('/\s/', $row[0])) {
+                if (!empty($row) && preg_match('/\s/', $row[0])) {
                     unset($rows[$key]);
                 } else {
                     $section = false;
@@ -145,5 +145,7 @@ class CleanTemplate extends Command
                 unset($rows[$key]);
             }
         }
+
+        $system->put($filename, implode("\n", $rows));
     }
 }
