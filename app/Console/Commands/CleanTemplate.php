@@ -35,40 +35,61 @@ class CleanTemplate extends Command
             $migrations = 'yes';
             $seeds = 'yes';
             $route = 'yes';
+            $test = 'yes';
         } else {
             $db_reset = $this->confirm('Reset database migrations?', true);
             $migrations = $this->confirm('Remove example database migration?',
                 true);
             $seeds = $this->confirm('Remove example database seed?', true);
             $route = $this->confirm('Remove example route?', true);
+            $test = $this->confirm('Remove example test?', true);
         }
+
         if ($db_reset) {
             $this->info('Resetting database migrations...');
             $db_reset_process = new Process('docker-compose run --rm fpm php artisan migrate:reset');
             $db_reset_process->run();
         }
+
         if ($migrations) {
-            $filename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
-            if ($this->deleteFile($filename, 'Example migration')) {
+            $migration_filename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
+            if ($this->deleteFile($migration_filename, 'Example migration')) {
                 $this->info('Removing example database migration...');
             }
         }
+
         if ($seeds) {
-            $filename = database_path('seeds/QuotesTableSeeder.php');
-            if ($this->deleteFile($filename, 'Example seed')) {
+            $seed_filename = database_path('seeds/QuotesTableSeeder.php');
+            if ($this->deleteFile($seed_filename, 'Example seed')) {
                 $this->info('Removing example database seed...');
             }
 
             $this->info('Altering DatabaseSeeder file...');
-            $fname = database_path('seeds/DatabaseSeeder.php');
-            $this->removeLineContaining($fname, 'QuotesTableSeeder');
+            $seeder_filename = database_path('seeds/DatabaseSeeder.php');
+            $this->removeLineContaining($seeder_filename, 'QuotesTableSeeder');
         }
+
         if ($route) {
             $this->info('Removing example route...');
             $this->removeLineContaining(base_path('app/Http/routes.php'),
                 'quotes');
 
         }
+
+        if ($route) {
+            $route_filename = base_path('tests/ExampleTest.php');
+            if ($this->deleteFile($route_filename, 'Example test')) {
+                $this->info('Removing example test...');
+            }
+        }
+
+        $this->info('Reverting readme...');
+        $system = new Filesystem();
+        $filename = base_path('readme.md');
+        if ($system->exists($filename)) {
+            $system->put($filename, '');
+        }
+
         $this->info('Removing this command...');
         $this->removeLineContaining(base_path('app/Console/kernel.php'), 'CleanTemplate');
         $this->deleteFile(base_path('app/Console/Commands/CleanTemplate.php'));
