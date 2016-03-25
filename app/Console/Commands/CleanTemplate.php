@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Component\Process\Process;
 
 class CleanTemplate extends Command
@@ -90,6 +91,9 @@ class CleanTemplate extends Command
             $system->put($filename, '');
         }
 
+        $this->info('Removing Travis CI notifications...');
+        $this->removeTravisNotification();
+
         $this->info('Removing this command...');
         $this->removeLineContaining(base_path('app/Console/kernel.php'), 'CleanTemplate');
         $this->deleteFile(base_path('app/Console/Commands/CleanTemplate.php'));
@@ -119,5 +123,27 @@ class CleanTemplate extends Command
         }
 
         $system->put($filename, implode("\n", $rows));
+    }
+
+    private function removeTravisNotification()
+    {
+        $system = new Filesystem();
+        $filename = base_path('.travis.yml');
+        $blacklist = 'notifications';
+        $rows = explode("\n", $system->get($filename));
+
+        $section = false;
+        foreach ($rows as $key => $row) {
+            if ($section) {
+                if (preg_match('/\s/', $row[0])) {
+                    unset($rows[$key]);
+                } else {
+                    $section = false;
+                }
+            } elseif (preg_match("/($blacklist)/", $row)) {
+                $section = true;
+                unset($rows[$key]);
+            }
+        }
     }
 }
