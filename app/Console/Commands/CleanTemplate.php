@@ -65,7 +65,9 @@ class CleanTemplate extends Command
         }
         if ($route) {
             $this->info('Removing example route.');
-            $this->removeLineContaining(base_path('app/Http/routes.php'), 'quotes');
+            $this->removeLineContaining(base_path('app/Http/routes.php'),
+                'quotes');
+
         }
     }
 
