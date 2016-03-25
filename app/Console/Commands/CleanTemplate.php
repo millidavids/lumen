@@ -64,14 +64,17 @@ class CleanTemplate extends Command
             $this->removeLineContaining($fname, 'QuotesTableSeeder');
         }
         if ($route) {
-            $this->info('Removing example route.');
+            $this->info('Removing example route...');
             $this->removeLineContaining(base_path('app/Http/routes.php'),
                 'quotes');
 
         }
+        $this->info('Removing this command...');
+        $this->removeLineContaining(base_path('app/Console/kernel.php'), 'CleanTemplate');
+        $this->deleteFile(base_path('app/Console/Commands/CleanTemplate.php'));
     }
 
-    private function deleteFile($filename, $type)
+    private function deleteFile($filename, $type=null)
     {
         $system = new Filesystem();
         if ($system->exists($filename)) {
