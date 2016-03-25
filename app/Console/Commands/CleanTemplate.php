@@ -61,18 +61,8 @@ class CleanTemplate extends Command
             }
 
             $this->info('Altering DatabaseSeeder file.');
-            $system = new Filesystem();
-            $blacklist = "QuotesTableSeeder";
             $fname = database_path('seeds/DatabaseSeeder.php');
-            $rows = explode("\n", $system->get($fname));
-
-            foreach ($rows as $key => $row) {
-                if (preg_match("/($blacklist)/", $row)) {
-                    unset($rows[$key]);
-                }
-            }
-
-            file_put_contents($fname, implode("\n", $rows));
+            $this->removeLineContaining($fname, 'QuotesTableSeeder');
         }
     }
 
@@ -86,5 +76,19 @@ class CleanTemplate extends Command
             return false;
         }
         return true;
+    }
+
+    private function removeLineContaining($filename, $blacklist)
+    {
+        $system = new Filesystem();
+        $rows = explode("\n", $system->get($filename));
+
+        foreach ($rows as $key => $row) {
+            if (preg_match("/($blacklist)/", $row)) {
+                unset($rows[$key]);
+            }
+        }
+
+        $system->put($filename, implode("\n", $rows));
     }
 }
