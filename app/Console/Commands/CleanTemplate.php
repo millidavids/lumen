@@ -77,7 +77,7 @@ class CleanTemplate extends Command
 
         }
 
-        if ($route) {
+        if ($test) {
             $route_filename = base_path('tests/ExampleTest.php');
             if ($this->deleteFile($route_filename, 'Example test')) {
                 $this->info('Removing example test...');
