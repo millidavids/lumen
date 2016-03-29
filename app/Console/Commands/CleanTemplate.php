@@ -22,7 +22,7 @@ class CleanTemplate extends Command
      *
      * @var string
      */
-    protected $description = 'Cleans the example files out of the project.';
+    protected $description = 'Cleans the example files out of the project';
 
     /**
      * Execute the console command.
