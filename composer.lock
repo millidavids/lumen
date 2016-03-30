@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8546bcf579c75d00ecb5257c42c4e06",
-    "content-hash": "07ace91376d69c27901858438bfb1da7",
+    "hash": "c009a5179668745a1fe276825670121f",
+    "content-hash": "7b0d91b6c7015ae53c43ee24021c1473",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -84,7 +84,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/auth/zipball/2110f0225de8223821903ba8f698dba904da04c3",
+                "url": "https://api.github.com/repos/illuminate/auth/zipball/2058ea5832eb69ad75b9ba47000aef32f85a112e",
                 "reference": "2110f0225de8223821903ba8f698dba904da04c3",
                 "shasum": ""
             },
@@ -226,7 +226,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/97a2b35b22ef357e8d405dfa3f2403494b2ad586",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/3b425e3b8746ce50785d5ac4305a781bc3c31d01",
                 "reference": "97a2b35b22ef357e8d405dfa3f2403494b2ad586",
                 "shasum": ""
             },
@@ -457,7 +457,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/96dfde902ed1279fba22055ff2b0152f57a4d9c6",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/1b021f63226e2188711c3f419defa1138c2f605f",
                 "reference": "96dfde902ed1279fba22055ff2b0152f57a4d9c6",
                 "shasum": ""
             },
@@ -517,7 +517,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/encryption/zipball/223c3c9a82363325f03014826e055b3196da43ff",
+                "url": "https://api.github.com/repos/illuminate/encryption/zipball/0ad053cf0b98122cff23a642280a7a8c2068afb6",
                 "reference": "223c3c9a82363325f03014826e055b3196da43ff",
                 "shasum": ""
             },
@@ -943,7 +943,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f990b9c154b92bfa08dd83e4d792bc807213ab0c",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/b8d2131e38fc26e42f742c7af68de1ca726a545c",
                 "reference": "f990b9c154b92bfa08dd83e4d792bc807213ab0c",
                 "shasum": ""
             },
@@ -1044,7 +1044,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/validation/zipball/ba6a8fb3fcd9cbc6744811bef734ad5022183810",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/8ca409445c1516426f586bab5b516c015fd1dbce",
                 "reference": "ba6a8fb3fcd9cbc6744811bef734ad5022183810",
                 "shasum": ""
             },
@@ -1094,7 +1094,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/1ece5ddb5928e7273bf52d4bcba04aae6d534f5c",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/a0e77662f06eaae851469ebf132868c9024a259d",
                 "reference": "1ece5ddb5928e7273bf52d4bcba04aae6d534f5c",
                 "shasum": ""
             },
@@ -1141,7 +1141,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/87a9b1c718946e1eb83209795a19d46beb899be3",
+                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/e659618fbc920ca60a2c78a9e2378646d88e0c59",
                 "reference": "87a9b1c718946e1eb83209795a19d46beb899be3",
                 "shasum": ""
             },
@@ -1225,7 +1225,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/96034ac8afc647cef61a24e0c9f39452f2165496",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dec4e574c2efcbbd4b6441ef64334daa79edf8f2",
                 "reference": "96034ac8afc647cef61a24e0c9f39452f2165496",
                 "shasum": ""
             },
@@ -1592,7 +1592,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/2b767bc4a6b770d6d90ffc4f3e82f6533627071c",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/5f4f7b4aaf3615f62183e818f5efa542d4fb95f2",
                 "reference": "2b767bc4a6b770d6d90ffc4f3e82f6533627071c",
                 "shasum": ""
             },
@@ -1758,7 +1758,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/3bbea2cc807b15c36e46b51ff1e359ef0c619842",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/99f38445a874e7becb8afc4b4a79ee181cf6ec3f",
                 "reference": "3bbea2cc807b15c36e46b51ff1e359ef0c619842",
                 "shasum": ""
             },
@@ -1811,7 +1811,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/579f828489659d7b3430f4bd9b67b4618b387dea",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/b1e5ab74018bc7439a2c0498e8318ed6fbea37ae",
                 "reference": "579f828489659d7b3430f4bd9b67b4618b387dea",
                 "shasum": ""
             },
@@ -2060,7 +2060,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/a0a937985b89ccce8eac839c16b3a5242e5a1c0b",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e6f1f98bbd355d209a992bfff45e7edfbd4a0776",
                 "reference": "a0a937985b89ccce8eac839c16b3a5242e5a1c0b",
                 "shasum": ""
             },
@@ -2313,7 +2313,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/68c0d749b7a9bb527a7b0d3226fa397f26005955",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/8deb6343c80c4edf546a6fff01a2b05c7dc59ac4",
                 "reference": "68c0d749b7a9bb527a7b0d3226fa397f26005955",
                 "shasum": ""
             },
@@ -2450,7 +2450,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e7ca4b7b04e1e10e37e2e411fc8c47a5bb6c9bae",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/eb4bfe1366364e1fb0c2313156553336a92ff5e7",
                 "reference": "e7ca4b7b04e1e10e37e2e411fc8c47a5bb6c9bae",
                 "shasum": ""
             },
@@ -3454,6 +3454,84 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "squizlabs/php_codesniffer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6936deb6f5a686612ffe929c9afb6628154dd57a",
+                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "bin": [
+                "scripts/phpcs",
+                "scripts/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/CLI.php",
+                    "CodeSniffer/Exception.php",
+                    "CodeSniffer/File.php",
+                    "CodeSniffer/Fixer.php",
+                    "CodeSniffer/Report.php",
+                    "CodeSniffer/Reporting.php",
+                    "CodeSniffer/Sniff.php",
+                    "CodeSniffer/Tokens.php",
+                    "CodeSniffer/Reports/",
+                    "CodeSniffer/Tokenizers/",
+                    "CodeSniffer/DocGenerators/",
+                    "CodeSniffer/Standards/AbstractPatternSniff.php",
+                    "CodeSniffer/Standards/AbstractScopeSniff.php",
+                    "CodeSniffer/Standards/AbstractVariableSniff.php",
+                    "CodeSniffer/Standards/IncorrectPatternException.php",
+                    "CodeSniffer/Standards/Generic/Sniffs/",
+                    "CodeSniffer/Standards/MySource/Sniffs/",
+                    "CodeSniffer/Standards/PEAR/Sniffs/",
+                    "CodeSniffer/Standards/PSR1/Sniffs/",
+                    "CodeSniffer/Standards/PSR2/Sniffs/",
+                    "CodeSniffer/Standards/Squiz/Sniffs/",
+                    "CodeSniffer/Standards/Zend/Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2016-03-29 23:50:15"
+        },
+        {
             "name": "symfony/var-dumper",
             "version": "dev-master",
             "source": {
@@ -3526,7 +3604,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/38aebd1045f91caaf25db0164e2703b21fb5359d",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d6fa3dde4a2f5449f4c27779f8da4f27d7c5738c",
                 "reference": "38aebd1045f91caaf25db0164e2703b21fb5359d",
                 "shasum": ""
             },
