@@ -78,7 +78,6 @@ class CleanTemplate extends Command
                 base_path('app/Http/routes.php'),
                 'quotes'
             );
-
         }
 
         if ($test) {
