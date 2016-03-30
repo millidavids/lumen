@@ -32,13 +32,13 @@ class CleanTemplate extends Command
     public function handle()
     {
         if ($this->option('force')) {
-            $db_reset = 'yes';
-            $migrations = 'yes';
-            $seeds = 'yes';
-            $route = 'yes';
-            $test = 'yes';
+            $dbReset = true;
+            $migrations = true;
+            $seeds = true;
+            $route = true;
+            $test = true;
         } else {
-            $db_reset = $this->confirm('Reset database migrations?', true);
+            $dbReset = $this->confirm('Reset database migrations?', true);
             $migrations = $this->confirm('Remove example database migration?',
                 true);
             $seeds = $this->confirm('Remove example database seed?', true);
@@ -46,28 +46,28 @@ class CleanTemplate extends Command
             $test = $this->confirm('Remove example test?', true);
         }
 
-        if ($db_reset) {
+        if ($dbReset) {
             $this->info('Resetting database migrations...');
-            $db_reset_process = new Process('docker-compose run --rm fpm php artisan migrate:reset');
-            $db_reset_process->run();
+            $dbResetProcess = new Process('docker-compose run --rm fpm php artisan migrate:reset');
+            $dbResetProcess->run();
         }
 
         if ($migrations) {
-            $migration_filename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
-            if ($this->deleteFile($migration_filename, 'Example migration')) {
+            $migrationFilename = database_path('migrations/2016_03_16_122149_create_quotes_table.php');
+            if ($this->deleteFile($migrationFilename, 'Example migration')) {
                 $this->info('Removing example database migration...');
             }
         }
 
         if ($seeds) {
-            $seed_filename = database_path('seeds/QuotesTableSeeder.php');
-            if ($this->deleteFile($seed_filename, 'Example seed')) {
+            $seedFilename = database_path('seeds/QuotesTableSeeder.php');
+            if ($this->deleteFile($seedFilename, 'Example seed')) {
                 $this->info('Removing example database seed...');
             }
 
             $this->info('Altering DatabaseSeeder file...');
-            $seeder_filename = database_path('seeds/DatabaseSeeder.php');
-            $this->removeLineContaining($seeder_filename, 'QuotesTableSeeder');
+            $seederFilename = database_path('seeds/DatabaseSeeder.php');
+            $this->removeLineContaining($seederFilename, 'QuotesTableSeeder');
         }
 
         if ($route) {
@@ -78,8 +78,8 @@ class CleanTemplate extends Command
         }
 
         if ($test) {
-            $route_filename = base_path('tests/ExampleTest.php');
-            if ($this->deleteFile($route_filename, 'Example test')) {
+            $routeFilename = base_path('tests/ExampleTest.php');
+            if ($this->deleteFile($routeFilename, 'Example test')) {
                 $this->info('Removing example test...');
             }
         }
