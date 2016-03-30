@@ -39,8 +39,10 @@ class CleanTemplate extends Command
             $test = true;
         } else {
             $dbReset = $this->confirm('Reset database migrations?', true);
-            $migrations = $this->confirm('Remove example database migration?',
-                true);
+            $migrations = $this->confirm(
+                'Remove example database migration?',
+                true
+            );
             $seeds = $this->confirm('Remove example database seed?', true);
             $route = $this->confirm('Remove example route?', true);
             $test = $this->confirm('Remove example test?', true);
@@ -72,8 +74,10 @@ class CleanTemplate extends Command
 
         if ($route) {
             $this->info('Removing example route...');
-            $this->removeLineContaining(base_path('app/Http/routes.php'),
-                'quotes');
+            $this->removeLineContaining(
+                base_path('app/Http/routes.php'),
+                'quotes'
+            );
 
         }
 
@@ -99,7 +103,7 @@ class CleanTemplate extends Command
         $this->deleteFile(base_path('app/Console/Commands/CleanTemplate.php'));
     }
 
-    private function deleteFile($filename, $type=null)
+    private function deleteFile($filename, $type = null)
     {
         $system = new Filesystem();
         if ($system->exists($filename)) {
