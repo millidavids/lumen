@@ -98,7 +98,7 @@ class CleanTemplate extends Command
         $this->removeTravisNotification();
 
         $this->info('Removing this command...');
-        $this->removeLineContaining(base_path('app/Console/kernel.php'), 'CleanTemplate');
+        $this->removeLineContaining(base_path('app/Console/Commands/Kernel.php'), 'CleanTemplate');
         $this->deleteFile(base_path('app/Console/Commands/CleanTemplate.php'));
     }
 
