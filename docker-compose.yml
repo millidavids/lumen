@@ -23,7 +23,3 @@ services:
       POSTGRES_USER: service_user
       POSTGRES_PASSWORD: P@ssw0rd
       POSTGRES_DB: service_db
-  composer:
-    image: realpage/builder:composer-1-beta1
-    volumes_from:
-      - fpm
