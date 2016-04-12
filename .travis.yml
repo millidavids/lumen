@@ -38,7 +38,7 @@ before_install:
   - docker-compose ps
 install:
   # Install dev php dependencies
-  - docker run -i -v $(pwd):/var/www/html $(docker images -q realpage/lumen:fpm) composer install --no-interaction --prefer-dist
+  - docker run -i -v $(pwd):/var/www/html $(docker images -q realpage/builder:composer-1) composer install --no-interaction --prefer-dist
 script:
   # Ensure phpcs triggers a failing build
   - docker exec -it $(docker-compose ps -q fpm) vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
@@ -53,7 +53,7 @@ script:
   - docker exec -it $(docker-compose ps -q fpm) vendor/bin/phpunit
 after_success:
   # Revert to production-only php dependencies
-  - if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'staging' || $TRAVIS_BRANCH == 'develop' ]]; then docker run -i -v $(pwd):/var/www/html $(docker images -q realpage/lumen:fpm) composer install --no-interaction --no-dev --prefer-dist ; fi
+  - if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'staging' || $TRAVIS_BRANCH == 'develop' ]]; then docker run -i -v $(pwd):/var/www/html $(docker images -q realpage/builder:composer-1) composer install --no-interaction --no-dev --prefer-dist ; fi
   # Deployable image tags must be in format: [service].[branch].[commit-hash].[timestamp]
   - if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'staging' || $TRAVIS_BRANCH == 'develop' ]]; then docker tag "${DOCKER_REPO}:fpm" "${DOCKER_REPO}:fpm.${IMAGE_SLUG}" && docker push "${DOCKER_REPO}:fpm.${IMAGE_SLUG}" ; fi
 notifications:

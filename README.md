@@ -1,4 +1,4 @@
-## Lumen Starter Template [![Build Status](https://travis-ci.org/Realpage/lumen.svg?branch=master)](https://travis-ci.org/Realpage/lumen)
+## Lumen Starter Template [![Build Status](https://travis-ci.org/realpage/lumen.svg?branch=master)](https://travis-ci.org/realpage/lumen)
 
 This [Laravel Lumen](https://lumen.laravel.com) starter template is intended to be forked and used for new projects.
 
@@ -21,14 +21,14 @@ This [Laravel Lumen](https://lumen.laravel.com) starter template is intended to 
 ### Using This Repository
 
 1. FORK this repo **(do not clone)**
-2. Reference the [contributing guide](https://github.com/Realpage/lumen/blob/master/CONTRIBUTING.md) for running this application locally
+2. Reference the [contributing guide](https://github.com/realpage/lumen/blob/master/CONTRIBUTING.md) for running this application locally
 3. `docker exec -it $(docker ps -f name=fpm -q) php artisan clean:template` to strip out example migrations, seeds, tests, etc...
 
 ### FAQ
 
 #### Is there a shortcut for running commands within specific containers?
 
-Yes!  [Using the alias](http://askubuntu.com/a/17537/132639) below, you can run commands in containers with `dockerexc fpm php -v` instead of `docker exec -it $(docker ps -f name=fpm -q) php -v`.
+Yes!  [Using an alias](http://askubuntu.com/a/17537/132639) below, you can run commands in containers with `dockerexc fpm php -v` instead of `docker exec -it $(docker ps -f name=fpm -q) php -v`.
 
 ```
 alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it $(docker-compose ps -q ${service}) "$@" };_docker_exec'
