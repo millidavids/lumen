@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: infrastructure/fpm/Dockerfile
-    image: realpage/lumen:fpm
+    image: millidavids/lumen:fpm
     env_file: .env
     volumes:
       - ./:/var/www/html
