@@ -33,3 +33,5 @@ Yes!  [Using an alias](http://askubuntu.com/a/17537/132639) below, you can run c
 ```
 alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it $(docker-compose ps -q ${service}) "$@" };_docker_exec'
 ```
+
+Travis Test
